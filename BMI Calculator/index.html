@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Body Mass Index Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro h1 {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            font: "poppins";
+            font-size: 39px;
+            color: #0f0707;
+            margin: 5 5 5px;
+            background-color: #f2faff;
+            box-shadow: 0 8px 0px rgba(0 0 0/0.10);
+        }
+               
+
+        .intro p {
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+            font: "poppins";
+            
+            
+        }
+
+        .form table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .form td {
+            padding: 5px;
+            vertical-align: middle;
+        }
+
+        .form input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button input[type="button"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 8px 0px rgba(0 0 0/0.10);
+            width: 100%;
+        }
+
+        .button input[type="button"]:hover {
+            background-color: #7d4a4a;
+            
+        }
+
+        .answer p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #b52e2e;
+            margin-top: 20px;
+        }
+
+        .legend {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #b8f2ff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: left;
+            max-width: 100%;
+            margin: 20px auto;                      
+        }
+        .footnote{
+            position: fixed;
+            bottom: 0;
+            right: 10;
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: italic;
+        }
+
+        .legend p{
+            font-weight: bold;
+        }
+
+        .legend li {
+            margin: 5px 0;
+        }
+        .legend li:nth-child(1){
+            color: orange;
+        }
+        .legend li:nth-child(2){
+            color: green;
+        }
+        .legend li:nth-child(3){
+            color: rgb(190, 190, 142);
+        }
+        .legend li:nth-child(4){
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="intro">
+            <h1>Body Mass Index Calculator</h1>
+        </section>
+
+        <section class="form">
+            <table>
+                <tr>
+                    <td>Enter Height (cm)</td>
+                    <td>:</td>
+                    <td><input type="number" id="number1" placeholder="Enter Height here"/></td>
+                </tr>
+                <tr>
+                    <td>Enter Weight (Kg)</td>
+                    <td>:</td>
+                    <td><input type="number" id="number2" placeholder="Enter Weight here"/></td>
+                </tr>
+                <tr>
+                    <tr class="button">
+                        <td></td>
+                    <td></td>
+                    <td><input type="button" id="cal" value="Get Answer" onclick="addNumbers()"/></td>
+                    </tr>
+                    
+                </tr>
+            </table>
+        </section>
+
+        <section class="answer">
+            <p id="showanswer">Your BMI will show here...</p>
+        </section>
+        
+        <section class="legend">
+            <p>Legend:</p>
+            <ul>
+                <li>Underweight     =   &lt; 18.5</li>
+                <li>Normal weight   =   18.5–24.9</li>
+                <li>Overweight      =   25–29.9</li>
+                <li>Obesity         =   BMI of 30 or greater</li>
+            </ul>
+        </section>
+        <section class="footnote">
+            <p>
+                Designed by Eric Nyamaah (c)2023
+            </p>
+        </section>
+        
+        <script>
+            function addNumbers() {
+                // get the information from the input tags
+                let Height = parseFloat(document.getElementById("number1").value);
+                let Weight = parseFloat(document.getElementById("number2").value);
+                // Convert cm to meters
+                Height = Height / 100;
+                
+                let bmi = Weight / (Height * Height);
+                document.getElementById("showanswer").innerHTML = `Your BMI is : ${bmi.toFixed(2)}`;
+                console.log(bmi)
+            }
+        </script>
+    </main>
+</body>
+</html>
